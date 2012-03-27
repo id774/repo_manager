@@ -1,0 +1,44 @@
+<h1><%= params[:git_repo] %></h1>
+
+<div class="block">
+<table>
+
+  <tr>
+    <td>
+      ディレクトリ
+    </td>
+    <td>
+      <%= GIT_DIR + "/" + params[:git_repo] + ".git" %>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      リポジトリ
+    </td>
+    <td>
+      ssh://yourname@<%= HOSTNAME + GIT_DIR + "/" + params[:git_repo] + ".git" %>
+    </td>
+  </tr>
+
+  <% s = File::stat(GIT_DIR + "/" + params[:git_repo] + ".git/objects") %>
+  <tr>
+    <td>
+      最終更新日
+    </td>
+    <td>
+      <%= s.mtime %>
+    </td>
+  </tr>
+
+</table>
+
+<b><%= link_to 'このリポジトリを削除する',
+  params[:git_repo] + '/delete',
+  :controller => 'repo',
+  :action => 'delete_git',
+  :confirm => '本当に削除しますか',
+  :method => :delete %></b>
+</div>
+
+<%= link_to '戻る', repos_path %>

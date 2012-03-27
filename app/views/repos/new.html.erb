@@ -1,0 +1,19 @@
+<h1>リポジトリ新規作成</h1>
+
+<div class="block">
+  <% form_tag({ :controller => "repos", :action => "create" },
+    { :multipart => true }) do -%>
+      Git<br>
+    <%= text_field_tag("new_git_field", "") %>
+    <%= submit_tag("生成",
+      :class => "git_form_commit") %>
+      <br>
+      Subversion<br>
+    <%= text_field_tag("new_svn_field", "") %>
+    <%= submit_tag("生成",
+      :class => "svn_form_commit") %>
+  <% end -%>
+  <br>(英数字, '-', '_' のみ入力可能)
+</div>
+
+<%= link_to '戻る', repos_path %>

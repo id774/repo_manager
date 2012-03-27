@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title><%= @title || "Repository Manager" %></title>
+    <%= stylesheet_link_tag 'html5reset' %>
+    <%= stylesheet_link_tag 'html5common' %>
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <%= csrf_meta_tag %>
+  </head>
+<body>
+<p style="color: green"><%= notice %></p>
+<%= yield %>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<h1><%= params[:svn_repo] %></h1>
+
+<div class="block">
+<table>
+
+  <tr>
+    <td>
+      ディレクトリ
+    </td>
+    <td>
+      <%= SVN_DIR + "/" + params[:svn_repo] %>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      リポジトリ
+    </td>
+    <td>
+      <%= link_to 'http://' + HOSTNAME + '/svn/' + params[:svn_repo],
+      "/svn/" + params[:svn_repo] %>
+    </td>
+  </tr>
+
+  <% s = File::stat(SVN_DIR + "/" + params[:svn_repo] + "/db/current") %>
+  <tr>
+    <td>
+      最終更新日
+    </td>
+    <td>
+      <%= s.mtime %>
+    </td>
+  </tr>
+
+</table>
+
+<b><%= link_to 'このリポジトリを削除する',
+  params[:svn_repo] + '/delete',
+  :controller => 'svn',
+  :action => 'delete',
+  :confirm => '本当に削除しますか',
+  :method => :delete %></b>
+</div>
+
+<%= link_to '戻る', repos_path %>

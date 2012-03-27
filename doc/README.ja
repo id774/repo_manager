@@ -1,0 +1,70 @@
+repo_manager
+
+名前
+ repo_manager - リポジトリマネージャー
+
+説明
+ Git および SVN リポジトリを Web から作成 / 削除可能
+な管理ツールである。
+
+
+========
+動作環境
+========
+
+- Ruby 1.8/1.9
+- Rails 2.3.x 系
+
+
+============
+インストール
+============
+
+ Passenger 等を利用して通常の Rails アプリとして配置する。
+
+ bin の配下のシェルスクリプトを /var/www/bin に配置し
+apache ユーザーが実行可能とする。
+
+ 以下のディレクトリを作成し apache ユーザーで書き込み可能
+とする。
+ /var/lib/git
+ /var/lib/svn
+ /home/trash/git
+ /home/trash/svn
+
+ DB は利用しない。
+
+
+========
+環境設定
+========
+
+ リポジトリは /var/lib/git と /var/lib/svn にあることを
+前提としている。ディレクトリのパスは以下の設定ファイル
+で指定する。
+ config/environment.rb
+
+ リポジトリの削除をした場合、実際には /home/trash に
+ディレクトリが移動される。したがって /home/trash/git と
+/home/trash/svn を事前に作成し apache ユーザーで書き込み
+可能としておく必要がある。
+
+
+====
+認証
+====
+
+ 認証が必要な場合は各コントローラーの before_filter の
+コメントアウトを解除し有効にする。
+  before_filter :authenticate
+
+ private メソッドに認証情報を記載する。
+
+
+==========
+ライセンス
+==========
+
+ doc/LICENSE ファイルを参照。
+
+

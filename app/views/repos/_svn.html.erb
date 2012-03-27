@@ -1,0 +1,24 @@
+<div class="block">
+<span id="svn">
+<b>Subversion リポジトリ一覧</b>
+</span>
+<table>
+<% for svn_repo in @svn_repos do  %>
+  <% unless /\A\./ =~ svn_repo %>
+    <tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
+      <td><%= link_to(svn_repo,
+        { :controller => 'repo',
+          :action => 'svn',
+          :id => svn_repo },
+        { :class => 'detail' }) %></td>
+      <% s = File::stat(SVN_DIR + "/" + svn_repo + "/db/current") %>
+      <td>
+        <%= s.mtime.strftime("%Y/%m/%d %X (%a)") %>
+      </td>
+    </tr>
+  <% end %>
+<% end %>
+</table>
+<b><%= link_to '新規作成', new_repo_path %></b>
+</div>
+<%= link_to 'トップページへ戻る', '/' %>

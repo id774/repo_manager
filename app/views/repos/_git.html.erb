@@ -1,0 +1,24 @@
+<div class="block">
+<span id="git">
+<b>Git リポジトリ一覧</b>
+</span>
+<table>
+<% for git_repo in @git_repos do  %>
+  <% unless /\A\./ =~ git_repo %>
+    <tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
+      <td><%= link_to(git_repo,
+        { :controller => 'repo',
+          :action => 'git' ,
+          :id => git_repo },
+        { :class => 'detail' }) %></td>
+      <% s = File::stat(GIT_DIR + "/" + git_repo + "/objects") %>
+      <td>
+        <%= s.mtime.strftime("%Y/%m/%d %X (%a)") %>
+      </td>
+    </tr>
+  <% end %>
+<% end %>
+</table>
+<b><%= link_to '新規作成', new_repo_path %></b>
+</div>
+<%= link_to 'トップページへ戻る', '/' %>
