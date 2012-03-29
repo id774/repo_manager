@@ -25,7 +25,15 @@
         </div>
       </div>
     </section>
-    <%= notice %>
+    <% flash.each do |name, msg| %>
+    <section id="alert">
+      <div class="container" style="margin-top: 40px; padding-top: 10px">
+        <div class="alert-message block-message success">
+          <%= msg %>
+        </div>
+      </div>
+    </section>
+    <% end %>
     <%= yield %>
     <section id="footer">
       <footer class="footer">
