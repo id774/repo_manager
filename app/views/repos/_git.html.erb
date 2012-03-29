@@ -1,24 +1,50 @@
-<div class="block">
-<span id="git">
-<b>Git リポジトリ一覧</b>
-</span>
-<table>
-<% for git_repo in @git_repos do  %>
-  <% unless /\A\./ =~ git_repo %>
-    <tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
-      <td><%= link_to(git_repo,
-        { :controller => 'repo',
-          :action => 'git' ,
-          :id => git_repo },
-        { :class => 'detail' }) %></td>
-      <% s = File::stat(GIT_DIR + "/" + git_repo + "/objects") %>
-      <td>
-        <%= s.mtime.strftime("%Y/%m/%d %X (%a)") %>
-      </td>
-    </tr>
-  <% end %>
-<% end %>
-</table>
-<b><%= link_to '新規作成', new_repo_path %></b>
-</div>
-<%= link_to 'トップページへ戻る', '/' %>
+<section id="index-git">
+  <div class="container" style="margin-top: 40px; padding-top: 10px">
+    <div class="pageContent">
+      <div class="index-git">
+        <div class="container">
+          <div class="content">
+            <div class="row">
+              <div class="span12">
+                <h1>Git リポジトリ一覧</h1>
+                <table class="condensed-table zebra-striped">
+                  <thead>
+                    <tr>
+                      <th>
+                        リポジトリ一覧
+                      </th>
+                      <th>
+                        更新日付
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% for git_repo in @git_repos do  %>
+                    <% unless /\A\./ =~ git_repo %>
+                    <tr>
+                      <td>
+                        <%= link_to(git_repo,
+                        { :controller => 'repo',
+                        :action => 'git' ,
+                        :id => git_repo }
+                        ) %>
+                      </td>
+                      <% s = File::stat(GIT_DIR + "/" + git_repo + "/objects") %>
+                      <td>
+                        <%= s.mtime.strftime("%Y/%m/%d %X (%a)") %>
+                      </td>
+                    </tr>
+                    <% end %>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+              <div class="span4">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

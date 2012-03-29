@@ -1,24 +1,50 @@
-<div class="block">
-<span id="svn">
-<b>Subversion リポジトリ一覧</b>
-</span>
-<table>
-<% for svn_repo in @svn_repos do  %>
-  <% unless /\A\./ =~ svn_repo %>
-    <tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
-      <td><%= link_to(svn_repo,
-        { :controller => 'repo',
-          :action => 'svn',
-          :id => svn_repo },
-        { :class => 'detail' }) %></td>
-      <% s = File::stat(SVN_DIR + "/" + svn_repo + "/db/current") %>
-      <td>
-        <%= s.mtime.strftime("%Y/%m/%d %X (%a)") %>
-      </td>
-    </tr>
-  <% end %>
-<% end %>
-</table>
-<b><%= link_to '新規作成', new_repo_path %></b>
-</div>
-<%= link_to 'トップページへ戻る', '/' %>
+<section id="index-svn">
+  <div class="container" style="margin-top: 40px; padding-top: 10px">
+    <div class="pageContent">
+      <div class="index-svn">
+        <div class="container">
+          <div class="content">
+            <div class="row">
+              <div class="span12">
+                <h1>SVN リポジトリ一覧</h1>
+                <table class="condensed-table zebra-striped">
+                  <thead>
+                    <tr>
+                      <th>
+                        リポジトリ一覧
+                      </th>
+                      <th>
+                        更新日付
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% for svn_repo in @svn_repos do  %>
+                    <% unless /\A\./ =~ svn_repo %>
+                    <tr>
+                      <td>
+                        <%= link_to(svn_repo,
+                        { :controller => 'repo',
+                        :action => 'svn' ,
+                        :id => svn_repo }
+                        ) %>
+                      </td>
+                      <% s = File::stat(SVN_DIR + "/" + svn_repo + "/db/current") %>
+                      <td>
+                        <%= s.mtime.strftime("%Y/%m/%d %X (%a)") %>
+                      </td>
+                    </tr>
+                    <% end %>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+              <div class="span4">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

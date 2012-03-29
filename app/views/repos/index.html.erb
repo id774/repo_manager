@@ -1,4 +1,17 @@
-<h1>リポジトリ一覧</h1>
-
 <%= render :partial => "git" %>
 <%= render :partial => "svn" %>
+
+<section id="new-repo">
+  <div class="container" style="margin-top: 40px; padding-top: 10px">
+    <div class="pageContent">
+      <div class="row">
+        <div class="span12">
+          <div class="actions">
+            <%= link_to 'リポジトリ新規作成', new_repo_path, :class => 'btn small primary' %>
+            <%= link_to 'トップページへ戻る', '/', :class => 'btn small' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

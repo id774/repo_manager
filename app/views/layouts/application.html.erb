@@ -3,15 +3,48 @@
   <head>
     <meta charset="UTF-8">
     <title><%= @title || "Repository Manager" %></title>
-    <%= stylesheet_link_tag 'html5reset' %>
-    <%= stylesheet_link_tag 'html5common' %>
     <!--[if lt IE 9]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <!-- Le styles -->
+    <%= stylesheet_link_tag 'bootstrap' %>
     <%= csrf_meta_tag %>
   </head>
-<body>
-<p style="color: green"><%= notice %></p>
-<%= yield %>
-</body>
+  <body>
+    <section id="topbar">
+      <div class="topbar" data-scrollspy="scrollspy">
+        <div class="topbar-inner">
+          <div class="container">
+            <a class="brand" href="#">Repository Manager</a>
+            <ul class="nav">
+              <li>
+                <a href="/">Home</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <%= notice %>
+    <%= yield %>
+    <section id="footer">
+      <footer class="footer">
+        <div class="container">
+          <p class="pull-right">
+            <a href="#">Back to top</a>
+          </p>
+          <p id="license">
+            Powered by
+            <a href="http://rubyonrails.org/">Ruby on Rails</a>,
+            <a href="http://twitter.github.com/bootstrap/">Bootstrap</a>.
+            <br>
+            Code licensed under the
+            <a href="http://www.gnu.org/copyleft/gpl.html">GPLv3</a>.
+            Documentation licensed under
+            <a href="http://creativecommons.org/licenses/by-nd/3.0/" rel="license">CC (BY-ND) 3.0</a>.
+          </p>
+        </div>
+      </footer>
+    </section>
+  </body>
 </html>

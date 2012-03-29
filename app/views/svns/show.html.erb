@@ -1,45 +1,58 @@
-<h1><%= params[:svn_repo] %></h1>
-
-<div class="block">
-<table>
-
-  <tr>
-    <td>
-      ディレクトリ
-    </td>
-    <td>
-      <%= SVN_DIR + "/" + params[:svn_repo] %>
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      リポジトリ
-    </td>
-    <td>
-      <%= link_to 'http://' + HOSTNAME + '/svn/' + params[:svn_repo],
-      "/svn/" + params[:svn_repo] %>
-    </td>
-  </tr>
-
-  <% s = File::stat(SVN_DIR + "/" + params[:svn_repo] + "/db/current") %>
-  <tr>
-    <td>
-      最終更新日
-    </td>
-    <td>
-      <%= s.mtime %>
-    </td>
-  </tr>
-
-</table>
-
-<b><%= link_to 'このリポジトリを削除する',
-  params[:svn_repo] + '/delete',
-  :controller => 'svn',
-  :action => 'delete',
-  :confirm => '本当に削除しますか',
-  :method => :delete %></b>
-</div>
-
-<%= link_to '戻る', repos_path %>
+<section id="svn-show">
+  <div class="container" style="margin-top: 40px; padding-top: 10px">
+    <div class="pageContent">
+      <div class="row">
+        <div class="span16">
+          <h1><%= params[:svn_repo] %></h1>
+          <table class="condensed-table bordered-table zebra-striped">
+            <thead>
+              <tr>
+                <th style="width: 150px;">項目</th>
+                <th>内容</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  ディレクトリ
+                </td>
+                <td>
+                  <%= SVN_DIR + "/" + params[:svn_repo] %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  リポジトリ
+                </td>
+                <td>
+                  <%= link_to 'http://' + HOSTNAME + '/svn/' + params[:svn_repo],
+                  "/svn/" + params[:svn_repo] %>
+                </td>
+              </tr>
+              <% s = File::stat(SVN_DIR + "/" + params[:svn_repo] + "/db/current") %>
+              <tr>
+                <td>
+                  最終更新日
+                </td>
+                <td>
+                  <%= s.mtime %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="actions">
+            <%= link_to 'このリポジトリを削除する',
+            params[:svn_repo] + '/delete',
+            :controller => 'svn',
+            :action => 'delete',
+            :confirm => '本当に削除しますか',
+            :method => :delete,
+            :class => 'btn small danger'
+            %>
+            <%= link_to '戻る', repos_path, :class => 'btn small' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

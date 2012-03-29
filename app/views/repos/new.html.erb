@@ -1,19 +1,42 @@
-<h1>リポジトリ新規作成</h1>
-
-<div class="block">
-  <% form_tag({ :controller => "repos", :action => "create" },
-    { :multipart => true }) do -%>
-      Git<br>
-    <%= text_field_tag("new_git_field", "") %>
-    <%= submit_tag("生成",
-      :class => "git_form_commit") %>
-      <br>
-      Subversion<br>
-    <%= text_field_tag("new_svn_field", "") %>
-    <%= submit_tag("生成",
-      :class => "svn_form_commit") %>
-  <% end -%>
-  <br>(英数字, '-', '_' のみ入力可能)
-</div>
-
-<%= link_to '戻る', repos_path %>
+<section id="repo-new">
+  <div class="container" style="margin-top: 40px; padding-top: 10px">
+    <div class="pageContent">
+      <div class="page-header">
+        <h2>リポジトリ新規作成</h2>
+      </div>
+      <div class="row">
+        <div class="span10">
+          <% form_tag({ :controller => "repos", :action => "create", :class => "new_user", :style => "margin:0;padding:0;display:inline" }, { :multipart => true }) do -%>
+          <fieldset>
+            <div class="clearfix">
+              <label for="label_git">Git</label>
+              <div class="input">
+                <%= text_field_tag("new_git_field", "") %>
+                <br />
+              </div>
+            </div>
+            <div class="clearfix">
+              <label for="label_svn">Subversion</label>
+              <div class="input">
+                <%= text_field_tag("new_svn_field", "") %>
+              </div>
+            </div>
+            <div class="actions">
+              <%= submit_tag("作成する",
+              :class => "btn small primary") %>
+              <%= link_to '一覧に戻る', repos_path, :class => "btn small" %>
+            </div>
+          </fieldset>
+          <% end -%>
+        </div>
+        <div class="span6">
+          <div class="info">
+            <p>
+              ※英数字, '-', '_' のみ入力可能
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
