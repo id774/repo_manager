@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 class ReposController < ApplicationController
-  #before_filter :authenticate
+  before_filter :authenticate if BASIC_AUTH
 
   # GET /repos
   # GET /repos.xml
@@ -55,8 +55,8 @@ class ReposController < ApplicationController
   private
   def authenticate
     authenticate_or_request_with_http_basic do |username, password|
-      username == "your_username" &&
-      password == "your_password"
+      username == USERNAME &&
+      password == PASSWORD
     end
   end
 end

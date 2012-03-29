@@ -11,7 +11,10 @@ SVN_DELETE_SH = "/var/www/bin/svn_delete.sh"
 GIT_DIR       = "/var/lib/git"
 GIT_NEW_SH    = "/var/www/bin/git_create.sh"
 GIT_DELETE_SH = "/var/www/bin/git_delete.sh"
-HOSTNAME      = "id774.net"
+HOSTNAME      = "your_hostname"
+USERNAME      = "your_username"
+PASSWORD      = "your_password"
+BASIC_AUTH    = false
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')

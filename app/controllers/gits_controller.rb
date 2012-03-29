@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 class GitsController < ApplicationController
-  #before_filter :authenticate
+  before_filter :authenticate if BASIC_AUTH
 
   # GET /gits/1
   # GET /gits/1.xml
@@ -35,8 +35,8 @@ class GitsController < ApplicationController
   private
   def authenticate
     authenticate_or_request_with_http_basic do |username, password|
-      username == "your_username" &&
-      password == "your_password"
+      username == USERNAME &&
+      password == PASSWORD
     end
   end
 end
