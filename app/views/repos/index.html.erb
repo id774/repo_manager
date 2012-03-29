@@ -1,5 +1,9 @@
+<% if @git_repos.length > 2 %>
 <%= render :partial => "git" %>
+<% end %>
+<% if @svn_repos.length > 2 %>
 <%= render :partial => "svn" %>
+<% end %>
 
 <section id="new-repo">
   <div class="container" style="margin-top: 40px; padding-top: 10px">
