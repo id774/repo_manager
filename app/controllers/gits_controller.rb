@@ -21,7 +21,7 @@ class GitsController < ApplicationController
       if /[a-zA-Z0-9_-]+$/ =~ params[:git_repo]
         result = system(GIT_DELETE_SH + " " + params[:git_repo])
         if result
-          flash[:notice] = params[:git_repo] + " was successfully deleted."
+          flash[:notice] = params[:git_repo] + " は正常に削除されました"
         end
       end
     end

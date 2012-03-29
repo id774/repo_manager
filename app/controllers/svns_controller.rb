@@ -21,7 +21,7 @@ class SvnsController < ApplicationController
       if /[a-zA-Z0-9_-]+$/ =~ params[:svn_repo]
         result = system(SVN_DELETE_SH + " " + params[:svn_repo])
         if result
-          flash[:notice] = params[:svn_repo] + " was successfully deleted."
+          flash[:notice] = params[:svn_repo] + " は正常に削除されました"
         end
       end
     end
