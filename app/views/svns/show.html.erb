@@ -41,6 +41,7 @@
             </tbody>
           </table>
           <div class="actions">
+            <%= link_to '戻る', repos_path, :class => 'btn small' %>
             <%= link_to 'このリポジトリを削除する',
             params[:svn_repo] + '/delete',
             :controller => 'svn',
@@ -49,7 +50,6 @@
             :method => :delete,
             :class => 'btn small danger'
             %>
-            <%= link_to '戻る', repos_path, :class => 'btn small' %>
           </div>
         </div>
       </div>
