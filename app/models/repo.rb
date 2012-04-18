@@ -1,2 +1,2 @@
-class Repo < ActiveRecord::Base
-end
+#class Repo < ActiveRecord::Base
+#end
