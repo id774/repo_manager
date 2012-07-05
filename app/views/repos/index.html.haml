@@ -1,0 +1,14 @@
+- if @git_repos.length > 2
+  = render 'git'
+- if @svn_repos.length > 2
+  = render 'svn'
+
+%section#new-repo
+  .container{:style => "margin-top: 40px; padding-top: 10px"}
+    .pageContent
+      .row
+        .span12.offset2
+          .actions
+            = link_to 'トップページへ戻る', '/', :class => 'btn small'
+            = link_to 'リポジトリ新規作成', new_repo_path, :class => 'btn small primary'
+

@@ -1,0 +1,26 @@
+#!/bin/sh
+
+kickstart() {
+    export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib
+    export PATH=/var/lib/jenkins/bin:/opt/ruby/1.9.3/bin:/opt/sbin:/opt/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+    export RACK_ROOT="."
+    export RACK_ENV="test"
+    export RAILS_ENV="test"
+    export COVERAGE="ON"
+    #export DATABASE_URL="$RACK_ROOT/db/test.sqlite3"
+    ruby -v
+}
+
+exec_rspec() {
+    $RACK_ROOT/script/bootstrap
+    bundle exec $RACK_ROOT/bin/rake db:migrate
+    bundle exec $RACK_ROOT/bin/rake simplecov
+}
+
+main() {
+    kickstart
+    exec_rspec
+}
+
+set -ex
+main

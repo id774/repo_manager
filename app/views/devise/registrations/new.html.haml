@@ -1,0 +1,36 @@
+- title 'サイトへ新規登録する - ポータル'
+.page-header
+  %h2 サイトへ新規登録する
+
+.row
+  .span10
+    = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+      -if resource.errors.any?
+        .alert-message.block-message.error
+          %h3= "#{resource.errors.count} 件のエラーが発生したため、登録できませんでした。"
+          %ul
+            - resource.errors.full_messages.each do |msg|
+              %li= msg
+
+      %fieldset
+        .clearfix
+          = f.label :email, 'メールアドレス'
+          .input
+            = f.text_field :email
+        .clearfix
+          = f.label :username, 'ユーザー名'
+          .input
+            = f.text_field :username
+            %span.help-inline 半角英数字3文字〜15文字まで。
+        .clearfix
+          = f.label :password, 'パスワード'
+          .input
+            = f.password_field :password
+        .clearfix
+          = f.label :password_confirmation, 'パスワード確認'
+          .input
+            = f.password_field :password_confirmation
+        .actions
+          = f.submit "登録", :class => 'btn primary'
+  .span6
+    = render :partial => "devise/shared/links"

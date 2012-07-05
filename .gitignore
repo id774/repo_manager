@@ -3,7 +3,16 @@ vendor/bundler
 vendor/bundler64
 .bundle
 db/*.sqlite3
+db/*.db
+db/schema.rb
 log/*.log
 tmp/
-public/assets/*
+coverage
 .sass-cache/
+.rbenv-version
+bin/
+vendor/gems/
+public/assets/*.css
+public/assets/*.js
+public/assets/*.gz
+public/assets/*.yml

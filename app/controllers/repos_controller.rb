@@ -1,51 +1,35 @@
 # -*- coding: utf-8 -*-
 
 class ReposController < ApplicationController
-  before_filter :authenticate if BASIC_AUTH
+  before_filter :authenticate if Repo.basic_auth
 
-  # GET /repos
-  # GET /repos.xml
   def index
-    @git_repos = Dir::entries(GIT_DIR).sort
-    @svn_repos = Dir::entries(SVN_DIR).sort
+    @git_repos = Dir::entries(Git.dir).sort
+    @svn_repos = Dir::entries(Svn.dir).sort
     @repos = @git_repos + @svn_repos
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @repos }
+      format.html
+      format.json { render json: @repos }
     end
   end
 
-  # GET /repos/new
-  # GET /repos/new.xml
   def new
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
     end
   end
 
-  # POST /repos
-  # POST /repos.xml
   def create
     if request.post?
       unless params[:new_git_field].blank?
-        if /[a-z][a-zA-Z0-9_-]+$/ =~ params[:new_git_field]
-          unless /\./ =~ params[:new_git_field]
-            result = system(GIT_NEW_SH + " " + params[:new_git_field])
-            if result
-              flash[:notice] = params[:new_git_field] + ' は正常に生成されました'
-            end
-          end
+        if Git.generate(params[:new_git_field])
+          flash[:notice] = 'Git リポジトリ ' + params[:new_git_field] + ' は正常に生成されました'
         end
       end
       unless params[:new_svn_field].blank?
-        if /[a-z][a-zA-Z0-9_-]+$/ =~ params[:new_svn_field]
-          unless /\./ =~ params[:new_svn_field]
-            result = system(SVN_NEW_SH + " " + params[:new_svn_field])
-            if result
-              flash[:notice] = params[:new_svn_field] + ' は正常に生成されました'
-            end
-          end
+        if Svn.generate(params[:new_svn_field])
+          flash[:notice] = 'SVN リポジトリ ' + params[:new_svn_field] + ' は正常に生成されました'
         end
       end
     end
@@ -55,8 +39,8 @@ class ReposController < ApplicationController
   private
   def authenticate
     authenticate_or_request_with_http_basic do |username, password|
-      username == USERNAME &&
-      password == PASSWORD
+      username == Repo.username &&
+      password == Repo.password
     end
   end
 end

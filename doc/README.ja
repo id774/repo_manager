@@ -13,7 +13,7 @@ repo_manager
 ========
 
 - Ruby 1.8 以降
-- Rails 2.3.x 系
+- Rails 3.1 以降
 
 
 ============
@@ -22,7 +22,7 @@ repo_manager
 
  Passenger 等を利用して通常の Rails アプリとして配置する。
 
- bin の配下のシェルスクリプトを /var/www/bin に配置し
+ shell の配下のシェルスクリプトを /var/www/bin に配置し
 apache ユーザーに実行可能なパーミッションを付与する。
 
  以下のディレクトリを作成し apache ユーザーで書き込み可能
@@ -40,7 +40,7 @@ apache ユーザーに実行可能なパーミッションを付与する。
 ========
 
  環境設定は以下でおこなう。
- config/environment.rb
+ app/models/repo.rb
 
  リポジトリのパス、ホスト名、認証の有無、ユーザー名と
 パスワードを指定する。

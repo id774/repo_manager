@@ -1,0 +1,27 @@
+%section#index-git
+  .container{:style => "margin-top: 40px; padding-top: 10px"}
+    %span#svn
+      .pageContent
+        .index-svn
+          .container
+            .content
+              .row
+                .span12.offset2
+                  %h1
+                    Git リポジトリ一覧
+                  %table{:class => 'condensed-table zebra-striped'}
+                    %thead
+                      %tr
+                        %th
+                          リポジトリ名
+                        %th
+                          最終更新日
+                    %tbody
+                      - for git_repo in @git_repos do
+                        - unless /\A\./ =~ git_repo
+                          %tr
+                            %td
+                              = link_to(git_repo, { :controller => 'gits', :action => 'show', :id => git_repo.gsub(/\.git\z/, "") })
+                            %td
+                              = File::stat(Git.dir + "/" + git_repo + "/objects").mtime.strftime("%Y/%m/%d %X (%a)")
+

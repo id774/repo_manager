@@ -1,28 +1,21 @@
 # -*- coding: utf-8 -*-
 
 class GitsController < ApplicationController
-  before_filter :authenticate if BASIC_AUTH
+  before_filter :authenticate if Repo.basic_auth
 
-  # GET /gits/1
-  # GET /gits/1.xml
   def show
-    @repo = params[:git_repo]
+    @repo = params[:id]
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @repo }
+      format.json { render json: @repo }
     end
   end
 
-  # DELETE /gits/1
-  # DELETE /gits/1.xml
-  def delete
+  def destroy
     if request.delete?
-      if /[a-zA-Z0-9_-]+$/ =~ params[:git_repo]
-        result = system(GIT_DELETE_SH + " " + params[:git_repo])
-        if result
-          flash[:notice] = params[:git_repo] + " は正常に削除されました"
-        end
+      if Git.destroy(params[:id])
+        flash[:notice] = "Git リポジトリ " + params[:id] + " は正常に削除されました"
       end
     end
 
@@ -35,8 +28,8 @@ class GitsController < ApplicationController
   private
   def authenticate
     authenticate_or_request_with_http_basic do |username, password|
-      username == USERNAME &&
-      password == PASSWORD
+      username == Repo.username &&
+      password == Repo.password
     end
   end
 end

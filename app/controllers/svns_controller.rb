@@ -1,28 +1,21 @@
 # -*- coding: utf-8 -*-
 
 class SvnsController < ApplicationController
-  before_filter :authenticate if BASIC_AUTH
+  before_filter :authenticate if Repo.basic_auth
 
-  # GET /svns/1
-  # GET /svns/1.xml
   def show
     @repo = params[:svn_repo]
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.xml  { render :xml => @repo }
     end
   end
 
-  # DELETE /svns/1
-  # DELETE /svns/1.xml
-  def delete
+  def destroy
     if request.delete?
-      if /[a-zA-Z0-9_-]+$/ =~ params[:svn_repo]
-        result = system(SVN_DELETE_SH + " " + params[:svn_repo])
-        if result
-          flash[:notice] = params[:svn_repo] + " は正常に削除されました"
-        end
+      if Svn.destroy(params[:id])
+        flash[:notice] = "SVN リポジトリ " + params[:id] + " は正常に削除されました"
       end
     end
 
@@ -35,8 +28,8 @@ class SvnsController < ApplicationController
   private
   def authenticate
     authenticate_or_request_with_http_basic do |username, password|
-      username == USERNAME &&
-      password == PASSWORD
+      username == Repo.username &&
+      password == Repo.password
     end
   end
 end

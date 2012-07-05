@@ -1,0 +1,30 @@
+- title 'パスワードを変更する - ポータル'
+
+.page-header
+  %h2 パスワードを変更する
+
+.row
+  .span10
+    = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
+      -if resource.errors.any?
+        .alert-message.block-message.error
+          %h3= "#{resource.errors.count} 件のエラーが発生したため、処理できませんでした。"
+          %ul
+            - resource.errors.full_messages.each do |msg|
+              %li= msg
+      = f.hidden_field :reset_password_token
+      
+      %fieldset
+        .clearfix
+          = f.label :password, 'パスワード'
+          .input
+            = f.password_field :password
+        .clearfix
+          = f.label :password_confirmation, 'パスワード確認'
+          .input
+            = f.password_field :password_confirmation
+        .actions
+          = f.submit "パスワードを変更", :class => 'btn primary'
+    
+  .span6
+    = render :partial => "devise/shared/links"

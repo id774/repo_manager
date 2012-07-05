@@ -1,0 +1,7 @@
+.container(style='margin-top: 40px; padding-top: 10px')
+  - flash.each do |name, msg|
+    .alert-message.block-message.success(class='#{name}')= msg
+
+.container
+  .pageContent
+    = yield

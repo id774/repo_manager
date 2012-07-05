@@ -1,0 +1,18 @@
+= form_tag({ :controller => "repos", :action => "create", :class => "new_user", :style => "margin:0;padding:0;display:inline" }, { :multipart => true }) do
+  %fieldset
+    .clearfix
+      %label.label_git
+        Git
+      .input
+        = text_field_tag("new_git_field", "")
+        %br
+    .clearfix
+      %label.label_svn
+        Subversion
+      .input
+        = text_field_tag("new_svn_field", "")
+        %br
+    .actions
+      = link_to '一覧に戻る', repos_path, :class => "btn small"
+      = submit_tag("作成する", :class => "btn small primary")
+

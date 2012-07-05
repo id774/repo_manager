@@ -1,10 +1,19 @@
-# Filters added to this controller apply to all controllers in the application.
-# Likewise, all the methods added will be available for all controllers.
-
 class ApplicationController < ActionController::Base
-  helper :all # include all helpers, all the time
-  protect_from_forgery # See ActionController::RequestForgeryProtection for details
+  protect_from_forgery
+  #def after_sign_in_path_for(resource)
+  #  statuses_path || root_path
+  #end
 
-  # Scrub sensitive parameters from your log
-  # filter_parameter_logging :password
+  def error_404
+    url = request.url 
+    render :status=>404,
+    :text=>"<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">
+<html><head>
+<title>404 Not Found</title>
+</head><body>
+<h1>Not Found</h1>
+<p>The requested URL #{url} was not found on this server.</p>
+</body></html>
+"
+  end
 end
