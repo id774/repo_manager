@@ -1,0 +1,26 @@
+#!/bin/sh
+
+setup() {
+    export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib
+    export PATH=/var/lib/jenkins/bin:/opt/ruby/1.9.3/bin:/opt/sbin:/opt/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+    export APP_DIR=/var/lib/rails/repo_manager
+}
+
+update() {
+    cd $APP_DIR
+    git pull
+    bundle exec rake assets:precompile RAILS_ENV=production
+    # bundle exec rake db:migrate RAILS_ENV=production
+    rm -rf tmp/*
+    chown -R apache:apache . && sudo chmod -R g+w,o-rwx .
+    cp -Rv /var/lib/rails/service_portal/html/* /var/www/html/
+}
+
+main() {
+    setup
+    update
+    service httpd restart
+}
+
+main
+exit 0
