@@ -15,7 +15,7 @@ describe ActionView::Helpers::FormTagHelper, '二重押し防止機能' do
       end
 
       it "ボタンがクリック不能になる" do
-        expect = "<input data-disable-with=\"Sending...\" name=\"commit\" type=\"submit\" />"
+        expect = "<input data-disable-with=\"処理中...\" name=\"commit\" type=\"submit\" />"
         submit_tag.should == expect
       end
     end
