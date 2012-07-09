@@ -1,13 +1,16 @@
 %section#repo-new
-  .page-header
-    %h2
-      リポジトリ新規作成
-    .row
-      .span10
-        = render 'form'
-      .span6
-        .info
-          %p
-            ※英数字, '-', '_' のみ入力可能
+  .container{:style => "margin-top: 40px; padding-top: 10px"}
+    %span#new
+      .pageContent
+        .new
+          .container
+            .content
+              .row
+                .span12.offset2
+                  %h1
+                    リポジトリ新規作成
+                    %small
+                      ※英数字, '-', '_' のみ使用可能
+                  = render 'form'
 
 #result

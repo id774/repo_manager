@@ -3,24 +3,8 @@
     .container
       %h3
         %a(href='/')
-          Timeline
+          Repository
       %ul
         %li= link_to 'Index', repos_path
-        -# %li= link_to 'Home', "https://twitter.com/#!/"
-        -# %li= link_to 'Messages', "https://twitter.com/#!/messages"
-        -# %li= link_to 'Who To Follow', "https://twitter.com/#!/who_to_follow"
-      -# %ul.nav.secondary-nav
-        %li= link_to 'Settings', "https://twitter.com/settings/account"
-        %li= link_to 'Notifications', "https://twitter.com/settings/notifications"
-        %li= link_to 'Profile', "https://twitter.com/settings/profile"
-        %li= link_to 'Design', "https://twitter.com/settings/design"
-        %li= link_to 'Applications', "https://twitter.com/settings/applications"
+        %li= link_to 'New', new_repo_path
 
-      -# if user_signed_in?
-        %ul.nav.secondary-nav
-          %li= link_to 'Configuration', edit_user_registration_path
-          %li= link_to 'Logout', destroy_user_session_path, :method => :delete
-      -# else
-        %ul.nav.secondary-nav
-          %li= link_to 'Login', new_user_session_path
-          %li= link_to 'Sign Up', new_user_registration_path
