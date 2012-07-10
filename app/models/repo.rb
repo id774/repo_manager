@@ -1,8 +1,4 @@
 class Repo < ActiveRecord::Base
-  HOSTNAME      = "your_hostname"
-  USERNAME      = "your_username"
-  PASSWORD      = "your_password"
-  BASIC_AUTH    = false
 
   class << self
     def hostname
@@ -21,4 +17,5 @@ class Repo < ActiveRecord::Base
       BASIC_AUTH
     end
   end
+
 end

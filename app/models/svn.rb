@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
 class Svn < ActiveRecord::Base
-  SVN_DIR    = "/var/lib/svn"
-  SVN_CREATE = "/var/www/bin/svn_create.sh"
-  SVN_DELETE = "/var/www/bin/svn_delete.sh"
 
   class << self
     def dir
@@ -37,4 +34,5 @@ class Svn < ActiveRecord::Base
       end
     end
   end
+
 end

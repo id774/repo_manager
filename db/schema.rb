@@ -11,21 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111202000000) do
+ActiveRecord::Schema.define(:version => 20111201000010) do
 
-  create_table "statuses", :force => true do |t|
-    t.integer  "uid"
-    t.string   "screen_name"
-    t.string   "text"
-    t.datetime "created_at"
-    t.boolean  "protected"
-    t.integer  "in_reply_to_status_id"
-    t.integer  "in_reply_to_user_id"
-    t.string   "in_reply_to_screen_name"
-    t.integer  "status_count"
-    t.integer  "friends_count"
-    t.integer  "followers_count"
-    t.string   "source"
+  create_table "repos", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

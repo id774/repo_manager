@@ -1,7 +1,4 @@
 class Git < ActiveRecord::Base
-  GIT_DIR    = "/var/lib/git"
-  GIT_CREATE = "/var/www/bin/git_create.sh"
-  GIT_DELETE = "/var/www/bin/git_delete.sh"
 
   class << self
     def dir
@@ -36,4 +33,5 @@ class Git < ActiveRecord::Base
       end
     end
   end
+
 end

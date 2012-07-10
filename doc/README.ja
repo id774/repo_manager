@@ -22,7 +22,7 @@ repo_manager
 
  Passenger 等を利用して通常の Rails アプリとして配置する。
 
- shell の配下のシェルスクリプトを /var/www/bin に配置し
+ sh の配下のシェルスクリプトを /var/www/bin に配置し
 apache ユーザーに実行可能なパーミッションを付与する。
 
  以下のディレクトリを作成し apache ユーザーで書き込み可能
