@@ -40,7 +40,7 @@ apache ユーザーに実行可能なパーミッションを付与する。
 ========
 
  環境設定は以下でおこなう。
- app/models/repo.rb
+ $RAILS_ROOT/config/initializers/environment.rb
 
  リポジトリのパス、ホスト名、認証の有無、ユーザー名と
 パスワードを指定する。
