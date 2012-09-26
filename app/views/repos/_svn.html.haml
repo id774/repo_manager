@@ -1,27 +1,26 @@
 %section#index-svn
   .container{:style => "margin-top: 40px; padding-top: 10px"}
-    %span#svn
-      .pageContent
-        .index-svn
-          .container
-            .content
-              .row
-                .span12.offset2
-                  %h1
-                    SVN リポジトリ一覧
-                  %table{:class => 'condensed-table zebra-striped'}
-                    %thead
-                      %tr
-                        %th
-                          リポジトリ名
-                        %th
-                          最終更新日
-                    %tbody
-                      - for svn_repo in @svn_repos do
-                        - unless /\A\./ =~ svn_repo
-                          %tr
-                            %td
-                              = link_to(svn_repo, { :controller => 'svns', :action => 'show', :id => svn_repo })
-                            %td
-                              = File::stat(Svn.dir + "/" + svn_repo + "/db/current").mtime.strftime("%Y/%m/%d %X (%a)")
+    .pageContent
+      .index-svn
+        .container
+          .content
+            .row
+              .span12.offset2
+                %h1
+                  SVN リポジトリ一覧
+                %table{:class => 'condensed-table zebra-striped'}
+                  %thead
+                    %tr
+                      %th
+                        リポジトリ名
+                      %th
+                        最終更新日
+                  %tbody
+                    - for svn_repo in @svn_repos do
+                      - unless /\A\./ =~ svn_repo
+                        %tr
+                          %td
+                            = link_to(svn_repo, { :controller => 'svns', :action => 'show', :id => svn_repo })
+                          %td
+                            = File::stat(Svn.dir + "/" + svn_repo + "/db/current").mtime.strftime("%Y/%m/%d %X (%a)")
 

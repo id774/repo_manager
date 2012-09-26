@@ -1,39 +1,38 @@
 %section#git-show
   .container{:style => "margin-top: 40px; padding-top: 10px"}
-    %span#git
-      .pageContent
-        .show-git
-          .container
-            .content
-              .row
-                .span12.offset2
-                  %h1
-                    = "#{params[:id]}.git"
-                  %table{:class => 'condensed-table bordered-table zebra-striped'}
-                    %thead
-                      %tr
-                        %th{:style => 'style="width: 150px;'}
-                          項目
-                        %th
-                          内容
-                    %tbody
-                      %tr
-                        %td
-                          ディレクトリ
-                        %td
-                          = "#{Git.dir}/#{params[:id]}.git"
-                      %tr
-                        %td
-                          リポジトリ
-                        %td
-                          = "ssh://yourname@#{Repo.hostname}#{Git.dir}/#{params[:id]}.git"
-                      %tr
-                        %td
-                          最終更新日
-                        %td
-                          = File::stat(Git.dir + "/" + params[:id] + ".git/objects").mtime
+    .pageContent
+      .show-git
+        .container
+          .content
+            .row
+              .span12.offset2
+                %h1
+                  = "#{params[:id]}.git"
+                %table{:class => 'condensed-table bordered-table zebra-striped'}
+                  %thead
+                    %tr
+                      %th{:style => 'style="width: 150px;'}
+                        項目
+                      %th
+                        内容
+                  %tbody
+                    %tr
+                      %td
+                        ディレクトリ
+                      %td
+                        = "#{Git.dir}/#{params[:id]}.git"
+                    %tr
+                      %td
+                        リポジトリ
+                      %td
+                        = "ssh://yourname@#{Repo.hostname}#{Git.dir}/#{params[:id]}.git"
+                    %tr
+                      %td
+                        最終更新日
+                      %td
+                        = File::stat(Git.dir + "/" + params[:id] + ".git/objects").mtime
 
-                  .actions
-                    = link_to '一覧へ戻る', repos_path, :class => 'btn small'
-                    = link_to 'このリポジトリを削除する', params[:id], :confirm => '本当に削除しますか', :method => :delete, :class => 'btn small danger'
+                .actions
+                  = link_to '一覧へ戻る', repos_path, :class => 'btn small'
+                  = link_to 'このリポジトリを削除する', params[:id], :confirm => '本当に削除しますか', :method => :delete, :class => 'btn small danger'
 
