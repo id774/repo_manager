@@ -12,9 +12,10 @@ kickstart() {
 }
 
 exec_rspec() {
-    $RACK_ROOT/script/bootstrap
-    bundle exec $RACK_ROOT/bin/rake db:migrate
-    bundle exec $RACK_ROOT/bin/rake simplecov
+    cd $RACK_ROOT
+    bundle install --path vendor/gems
+    bundle exec rake db:migrate
+    bundle exec rake simplecov
 }
 
 main() {
