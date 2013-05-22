@@ -11,6 +11,7 @@ if ENV['COVERAGE'] == 'on'
   end
 end
 
+RAILS_ROOT = File.join(File.dirname(__FILE__), '..')
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
