@@ -4,7 +4,7 @@ require File.dirname(__FILE__) + '/../spec_helper'
 describe SvnsController, 'SVN コントローラー' do
   fixtures :all
 
-  TEST_DIR22 = File.join('/', 'var', 'lib', 'svn', 'test_repo')
+  TEST_DIR22 = File.join(RAILS_ROOT, 'test', 'svn', 'test_repo')
 
   before do
     FileUtils.mkdir(TEST_DIR22) unless File.exist?(TEST_DIR22)

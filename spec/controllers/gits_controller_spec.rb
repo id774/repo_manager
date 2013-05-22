@@ -4,7 +4,7 @@ require File.dirname(__FILE__) + '/../spec_helper'
 describe GitsController, 'Git コントローラー' do
   fixtures :all
 
-  TEST_DIR11 = File.join('/', 'var', 'lib', 'git', 'test_repo.git')
+  TEST_DIR11 = File.join(RAILS_ROOT, 'test', 'git', 'test_repo.git')
 
   before do
     FileUtils.mkdir(TEST_DIR11) unless File.exist?(TEST_DIR11)
@@ -38,7 +38,7 @@ describe GitsController, 'Git コントローラー' do
   end
 
   after do
-    FileUtils.rm_rf(TEST_DIR11) if File.exist?(TEST_DIR11)
+    # FileUtils.rm_rf(TEST_DIR11) if File.exist?(TEST_DIR11)
   end
 
 end
