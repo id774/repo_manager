@@ -4,8 +4,8 @@ require File.dirname(__FILE__) + '/../spec_helper'
 describe ReposController, 'リポジトリコントローラー' do
   fixtures :all
 
-  TEST_DIR1 = File.join(RAILS_ROOT, 'test', 'git', 'test_repo.git')
-  TEST_DIR2 = File.join(RAILS_ROOT, 'test', 'svn', 'test_repo')
+  TEST_DIR1 = File.join(RailsApp::Application.config.git_dir, 'test_repo.git')
+  TEST_DIR2 = File.join(RailsApp::Application.config.svn_dir, 'test_repo')
 
   before do
     FileUtils.rm_rf(TEST_DIR1) if File.exist?(TEST_DIR1)
