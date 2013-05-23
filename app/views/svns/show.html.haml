@@ -36,5 +36,5 @@
 
                 .actions
                   = link_to '一覧へ戻る', repos_path, :class => 'btn small'
-                  = link_to 'このリポジトリを削除する', params[:id], :confirm => '本当に削除しますか', :method => :delete, :class => 'btn small danger'
+                  = link_to 'このリポジトリを削除する', params[:id], :data => { :confirm => '本当に削除しますか' }, :method => :delete, :class => 'btn small danger'
 
