@@ -61,11 +61,11 @@ module RailsApp
 
     config.git_dir    = File.join(APP_ROOT, 'test', 'git')
     config.git_create = File.join(APP_ROOT, 'sh', 'git_create.sh')
-    config.git_delete = File.join(APP_ROOT, 'sh', 'git_create.sh')
+    config.git_delete = File.join(APP_ROOT, 'sh', 'git_delete.sh')
 
     config.svn_dir    = File.join(APP_ROOT, 'test', 'svn')
     config.svn_create = File.join(APP_ROOT, 'sh', 'svn_create.sh')
-    config.svn_delete = File.join(APP_ROOT, 'sh', 'svn_create.sh')
+    config.svn_delete = File.join(APP_ROOT, 'sh', 'svn_delete.sh')
 
     config.hostname   = "your_hostname"
     config.username   = "your_username"
