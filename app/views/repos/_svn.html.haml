@@ -22,5 +22,5 @@
                           %td
                             = link_to(svn_repo, { :controller => 'svns', :action => 'show', :id => svn_repo })
                           %td
-                            = File::stat(Svn.dir + "/" + svn_repo + "/db/current").mtime.strftime("%Y/%m/%d %X (%a)")
+                            = File::stat(RailsApp::Application.config.svn_dir + "/" + svn_repo + "/db/current").mtime.strftime("%Y/%m/%d %X (%a)")
 

@@ -22,5 +22,5 @@
                           %td
                             = link_to(git_repo, { :controller => 'gits', :action => 'show', :id => git_repo.gsub(/\.git\z/, "") })
                           %td
-                            = File::stat(Git.dir + "/" + git_repo + "/objects").mtime.strftime("%Y/%m/%d %X (%a)")
+                            = File::stat(RailsApp::Application.config.git_dir + "/" + git_repo + "/objects").mtime.strftime("%Y/%m/%d %X (%a)")
 

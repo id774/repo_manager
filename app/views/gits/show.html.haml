@@ -22,17 +22,17 @@
                       %td
                         ディレクトリ
                       %td
-                        = "#{Git.dir}/#{params[:id]}.git"
+                        = "#{RailsApp::Application.config.git_dir}/#{params[:id]}.git"
                     %tr
                       %td
                         リポジトリ
                       %td
-                        = "ssh://yourname@#{Repo.hostname}#{Git.dir}/#{params[:id]}.git"
+                        = "ssh://yourname@#{RailsApp::Application.config.hostname}#{RailsApp::Application.config.git_dir}/#{params[:id]}.git"
                     %tr
                       %td
                         最終更新日
                       %td
-                        = File::stat(Git.dir + "/" + params[:id] + ".git/objects").mtime
+                        = File::stat(RailsApp::Application.config.git_dir + "/" + params[:id] + ".git/objects").mtime
 
                 .actions
                   = link_to '一覧へ戻る', repos_path, :class => 'btn small'

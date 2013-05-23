@@ -45,5 +45,32 @@ module RailsApp
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
+    # Configuration for repo manager.
+
+    APP_ROOT =  File.join(File.dirname(__FILE__), '..')
+
+    # config.git_dir    = "/var/lib/git"
+    # config.git_create = "/var/www/bin/git_create.sh"
+    # config.git_delete = "/var/www/bin/git_delete.sh"
+
+    # config.svn_dir    = "/var/lib/svn"
+    # config.svn_create = "/var/www/bin/svn_create.sh"
+    # config.svn_delete = "/var/www/bin/svn_delete.sh"
+
+    config.trash_dir  = File.join(APP_ROOT, 'test', 'trash')
+
+    config.git_dir    = File.join(APP_ROOT, 'test', 'git')
+    config.git_create = File.join(APP_ROOT, 'sh', 'git_create.sh')
+    config.git_delete = File.join(APP_ROOT, 'sh', 'git_create.sh')
+
+    config.svn_dir    = File.join(APP_ROOT, 'test', 'svn')
+    config.svn_create = File.join(APP_ROOT, 'sh', 'svn_create.sh')
+    config.svn_delete = File.join(APP_ROOT, 'sh', 'svn_create.sh')
+
+    config.hostname   = "your_hostname"
+    config.username   = "your_username"
+    config.password   = "your_password"
+    config.basic_auth = false
+
   end
 end

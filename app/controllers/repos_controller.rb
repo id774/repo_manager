@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
 class ReposController < ApplicationController
-  before_filter :authenticate if Repo.basic_auth
+  before_filter :authenticate if RailsApp::Application.config.basic_auth
 
   def index
-    @git_repos = Dir::entries(Git.dir).sort
-    @svn_repos = Dir::entries(Svn.dir).sort
+    @git_repos = Dir::entries(RailsApp::Application.config.git_dir).sort
+    @svn_repos = Dir::entries(RailsApp::Application.config.svn_dir).sort
     @repos = @git_repos + @svn_repos
 
     respond_to do |format|
@@ -39,8 +39,8 @@ class ReposController < ApplicationController
   private
   def authenticate
     authenticate_or_request_with_http_basic do |username, password|
-      username == Repo.username &&
-      password == Repo.password
+      username == RailsApp::Application.config.username &&
+      password == RailsApp::Application.config.password
     end
   end
 end

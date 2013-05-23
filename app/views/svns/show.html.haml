@@ -22,17 +22,17 @@
                       %td
                         ディレクトリ
                       %td
-                        = "#{Svn.dir}/#{params[:id]}"
+                        = "#{RailsApp::Application.config.svn_dir}/#{params[:id]}"
                     %tr
                       %td
                         リポジトリ
                       %td
-                        = link_to 'http://' + Repo.hostname + '/svn/' + params[:id], "/svn/" + params[:id]
+                        = link_to 'http://' + RailsApp::Application.config.hostname + '/svn/' + params[:id], "/svn/" + params[:id]
                     %tr
                       %td
                         最終更新日
                       %td
-                        = File::stat(Svn.dir + "/" + params[:id] + "/db/current").mtime
+                        = File::stat(RailsApp::Application.config.svn_dir + "/" + params[:id] + "/db/current").mtime
 
                 .actions
                   = link_to '一覧へ戻る', repos_path, :class => 'btn small'

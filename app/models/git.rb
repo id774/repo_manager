@@ -1,22 +1,11 @@
 class Git < ActiveRecord::Base
 
   class << self
-    def dir
-      GIT_DIR
-    end
-
-    def create
-      GIT_CREATE
-    end
-
-    def delete
-      GIT_DELETE
-    end
 
     def generate(id)
       if /[a-z][a-zA-Z0-9_-]+$/ =~ id
         unless /\./ =~ id
-          system(self.create + " " + id)
+          system(RailsApp::Application.config.git_create + " " + RailsApp::Application.config.git_dir + " " + id)
         else
          false
         end
@@ -27,11 +16,12 @@ class Git < ActiveRecord::Base
 
     def destroy(id)
       if /[a-zA-Z0-9_-]+$/ =~ id
-        system(self.delete + " " + id)
+        system(RailsApp::Application.config.git_delete + " " + RailsApp::Application.config.git_dir + " " + RailsApp::Application.config.trash_dir + " " + id)
       else
         false
       end
     end
+
   end
 
 end

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 class GitsController < ApplicationController
-  before_filter :authenticate if Repo.basic_auth
+  before_filter :authenticate if RailsApp::Application.config.basic_auth
 
   def show
     @repo = params[:id]
@@ -28,8 +28,8 @@ class GitsController < ApplicationController
   private
   def authenticate
     authenticate_or_request_with_http_basic do |username, password|
-      username == Repo.username &&
-      password == Repo.password
+      username == RailsApp::Application.config.username &&
+      password == RailsApp::Application.config.password
     end
   end
 end
