@@ -54,7 +54,7 @@ module RailsApp
     # config.git_delete = "/var/www/bin/git_delete.sh"
     # config.svn_dir    = "/var/lib/svn"
     # config.svn_create = "/var/www/bin/svn_create.sh"
-    # config.svn_delete = "/var/www/bin/svn_delete.Sh"
+    # config.svn_delete = "/var/www/bin/svn_delete.sh"
 
     # Configuration for the test environments.
     APP_ROOT =  File.join(File.dirname(__FILE__), '..')
