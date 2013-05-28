@@ -12,8 +12,7 @@ update() {
     bundle exec rake assets:precompile RAILS_ENV=production
     # bundle exec rake db:migrate RAILS_ENV=production
     rm -rf tmp/*
-    chown -R apache:apache . && sudo chmod -R g+w,o-rwx .
-    cp -Rv /var/lib/rails/service_portal/html/* /var/www/html/
+    chown -R www-data:www-data . && sudo chmod -R g+w,o-rwx .
 }
 
 main() {
