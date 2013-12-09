@@ -1,3 +1,5 @@
+# Version:20131209
+
 source 'http://rubygems.org'
 
 gem 'rails', '~>3'
@@ -37,7 +39,7 @@ gem 'haml-rails'
 # gem "will_paginate", "~> 3.0.pre2"
 
 group :test do
-  gem 'rspec'
+  gem 'rspec', "~> 2"
   gem 'rcov', :platforms => :mri_18
   gem 'simplecov'
   gem 'simplecov-rcov'
